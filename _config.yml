@@ -1,0 +1,20 @@
+title: Pedro Mello
+description: >-
+  Personal site of Pedro Mello.
+baseurl: ""
+url: "https://www.pedromello.uk"
+
+author_name: Pedro Mello
+email: contactme@pedromello.uk
+github_url: https://github.com/pedromellogomes
+linkedin_url: https://www.linkedin.com/in/pedromellogomes
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - CLAUDE.md

@@ -1,0 +1,65 @@
+---
+layout: default
+---
+<header class="site-header">
+  <h1>{{ site.author_name }}</h1>
+  <p class="contacts">
+    <a href="mailto:{{ site.email }}">email</a> ·
+    <a href="{{ site.github_url }}">github</a> ·
+    <a href="{{ site.linkedin_url }}">linkedin</a>
+  </p>
+</header>
+
+<section class="intro">
+  {{ content }}
+</section>
+
+<section>
+  <h2>Work</h2>
+  {% if site.data.work and site.data.work.size > 0 %}
+  <ul class="entries">
+    {% for w in site.data.work %}
+    <li>
+      <span class="dates">{{ w.start }}–{{ w.end | default: "" }}</span>
+      <span class="role">{{ w.role }}</span> @
+      {% if w.url %}<a href="{{ w.url }}">{{ w.company }}</a>{% else %}{{ w.company }}{% endif %}
+      <!-- {% if w.note %}<span class="note">— {{ w.note }}</span>{% endif %} -->
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="placeholder">[work history goes here]</p>
+  {% endif %}
+</section>
+
+<section>
+  <h2>Projects</h2>
+  {% if site.data.projects and site.data.projects.size > 0 %}
+  <ul class="entries">
+    {% for p in site.data.projects %}
+    <li>
+      {% if p.url %}<a href="{{ p.url }}">{{ p.name }}</a>{% else %}<strong>{{ p.name }}</strong>{% endif %}
+      — {{ p.description }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="placeholder">[projects go here]</p>
+  {% endif %}
+</section>
+
+<section>
+  <h2>Writing</h2>
+  {% if site.posts.size > 0 %}
+  <ul class="entries">
+    {% for post in site.posts %}
+    <li>
+      <span class="dates">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="placeholder">[no posts yet]</p>
+  {% endif %}
+</section>
