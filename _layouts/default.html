@@ -3,15 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
+  {% seo %}
+  {% if page.layout == 'home' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.author.name }}",
+    "url": "{{ site.url }}",
+    "email": "{{ site.email }}",
+    "sameAs": {{ site.social.links | jsonify }}
+  }
+  </script>
+  {% endif %}
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   {% feed_meta %}
 </head>
 <body>
+  <button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">·</button>
   <main>
     {{ content }}
   </main>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.querySelector('.theme-toggle');
+      var mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function current() {
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch (e) {}
+        if (stored === 'dark' || stored === 'light') return stored;
+        return mq.matches ? 'dark' : 'light';
+      }
+
+      function render() {
+        btn.textContent = current() === 'dark' ? 'light' : 'dark';
+      }
+
+      btn.addEventListener('click', function () {
+        var next = current() === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        root.setAttribute('data-theme', next);
+        render();
+      });
+
+      mq.addEventListener('change', function () {
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch (e) {}
+        if (stored !== 'dark' && stored !== 'light') render();
+      });
+
+      render();
+    })();
+  </script>
   {% if page.mermaid %}
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';

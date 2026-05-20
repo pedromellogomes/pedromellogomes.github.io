@@ -1,7 +1,10 @@
 ---
 layout: home
+description: >-
+  Personal site of Pedro Mello — software engineer interested in systems,
+  simplicity, and shipping.
 ---
 
-Software engineer. Creator of [TextOnlyEmail](https://www.textonlyemail.com).
-Building things at [Bohr](https://github.com/bohr-uk).
+Senior Software Engineer at [LeoVegas](https://www.leovegasgroup.com/).
+Creator of [TextOnlyEmail](https://www.textonlyemail.com).
 Interested in systems, simplicity, and shipping.

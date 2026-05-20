@@ -1,23 +1,31 @@
 # Work history. Order = most recent first.
 # Each entry: role, company, start, end (omit or "" for current), url (optional), note (optional)
+# Dates use YYYY.MM format.
+
+- role: "Senior Software Engineer"
+  company: "LeoVegas"
+  start: "2026.07"
+  end: ""
+  url: "https://www.leovegasgroup.com/"
+  note: ""
 
 - role: "Backend Software Engineer"
   company: "Bohr"
-  start: "2026"
-  end: ""
+  start: "2026.04"
+  end: "2026.07"
   url: "https://www.bohr.uk"
   note: ""
 
 - role: "Software Engineer"
   company: "Lanchester"
-  start: "2023"
-  end: "2026"
+  start: "2023.03"
+  end: "2026.03"
   url: "https://www.lanchestergroup.com/"
   note: ""
 
 - role: "Software Engineer"
   company: "GovBR"
-  start: "2019"
-  end: "2023"
+  start: "2019.01"
+  end: "2023.02"
   url: "https://governancabrasil.com.br/"
   note: ""

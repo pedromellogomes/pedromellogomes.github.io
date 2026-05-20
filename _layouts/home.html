@@ -3,15 +3,19 @@ layout: default
 ---
 <header class="site-header">
   <h1>{{ site.author_name }}</h1>
-  <p class="contacts">
-    <a href="mailto:{{ site.email }}">email</a> ·
-    <a href="{{ site.github_url }}">github</a> ·
-    <a href="{{ site.linkedin_url }}">linkedin</a>
-  </p>
 </header>
 
 <section class="intro">
   {{ content }}
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <ul class="entries">
+    <li>Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+    <li>GitHub: <a href="{{ site.github_url }}">{{ site.github_url | remove: "https://" }}</a></li>
+    <li>LinkedIn: <a href="{{ site.linkedin_url }}">{{ site.linkedin_url | remove: "https://" }}</a></li>
+  </ul>
 </section>
 
 <section>
@@ -39,6 +43,7 @@ layout: default
     {% for p in site.data.projects %}
     <li>
       {% if p.url %}<a href="{{ p.url }}">{{ p.name }}</a>{% else %}<strong>{{ p.name }}</strong>{% endif %}
+      {% if p.wip %}<span class="wip" title="Work in progress">🚧 work in progress</span>{% endif %}
       — {{ p.description }}
     </li>
     {% endfor %}

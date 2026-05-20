@@ -3,6 +3,9 @@ layout: post
 title: "Minimalism on the Web"
 date: 2026-05-19
 categories: web minimalism
+description: >-
+  Why minimal websites are faster, more accessible, and more respectful
+  — a practical argument for shipping fewer bytes and earning each one.
 ---
 
 ## The web forgot how to be quiet
